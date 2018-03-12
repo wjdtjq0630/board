@@ -35,7 +35,6 @@
  				alert('전화번호를 입력하세요!');
  				return false;
  			} else{
- 				alert('가입 완료!');
  				return true;
  			}
 
