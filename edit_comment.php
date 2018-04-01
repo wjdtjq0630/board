@@ -26,10 +26,22 @@
     <title>댓글 수정</title>
   </head>
   <body>
-    <form action="edit_commentdb.php" method="post">
+    <form action="edit_commentdb.php" method="post" onsubmit="return required();">
       <h2>댓글 수정</h2>
       <input type="hidden" name="id" value="<?php echo $id; ?>">
       <textarea name="comment" rows="3" cols="80" minlength="5" id="comment"><?php echo $comment; ?></textarea><input type="submit" value="등록" class="submit_comment">
     </form>
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+      function required(){
+        var comment = $("#comment").val();
+        if(comment.length<5){
+          alert("댓글을 5글자 이상 입력하세요!");
+          return false;
+        } else{
+          return true;
+        }
+      }
+    </script>
   </body>
 </html>

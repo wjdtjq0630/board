@@ -15,11 +15,6 @@
       echo '<script>alert("자신의 댓글만 삭제할 수 있습니다."); history.back();</script>';
       exit;
     }
-
-  if(strlen($comment)<5){
-    echo "<script>alert('댓글을 5글자 이상 입력하세요!'); history.back();</script>";
-    exit;
-  }
   $sql = "UPDATE comment_board SET comment='$comment' WHERE id='$id'";
   if(!$result = mysqli_query($conn, $sql)){
     echo "<script>alert('댓글 수정 오류!'); history.back();</script>";
