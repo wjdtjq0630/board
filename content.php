@@ -67,18 +67,18 @@
 		</table>
 	 </form>
 	 <?php
- 		$sql ="SELECT * FROM comment_board WHERE bbs_id=$id ORDER BY id DESC";
+ 		$sql ="SELECT * FROM comment_board WHERE bbs_id='$id' ORDER BY id DESC";
 		$result = mysqli_query($conn, $sql);
 		while($crow = mysqli_fetch_array($result)){
 			$name = htmlspecialchars($crow['name']);
 			$date = htmlspecialchars($crow['wdate']);
-			$comment = htmlspecialchars($crow['comment']);
+			$id = $crow['id'];
 			echo "<table class=\"comment\">
 				 <tr>
 					 <td class=\"cwriter\" rowspan=\"2\">".$name."</td><td class=\"cdate\">".$date."</td>
 				 </tr>
 				 <tr>
-					 <td>".$comment."</td>
+					 <td>".str_replace("\n", "<br>", htmlspecialchars($crow['comment']))."<br><a href='./delete_comment.php?id=$id' id='red'>삭제</a><a href='./edit_comment.php?id=$id'>수정</a></td>
 				 </tr>
 				</table>";
 			}
